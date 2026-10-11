@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mass Effectdle</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+</head>
+
+<body>
+    <main class="game-container">
+
+        <!-- Header -->
+        <header class="game-header">
+            <img class="game-logo" src="Logo-Mass-Effect.png" alt="Mass Effectdle" />
+            <p class="subtitle">TEST YOUR MASS EFFECT KNOWLEDGE</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="game-menu" aria-label="Game menu">
+            <button
+                class="menu-button"
+                id="statisticsButton"
+                type="button"
+                title="Statistics"
+                aria-label="Statistics"
+            >
+                <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
+            </button>
+
+            <button
+                class="menu-button"
+                id="readMeButton"
+                type="button"
+                title="Read me"
+                aria-label="Read me"
+            >
+                <i class="fa-solid fa-info" aria-hidden="true"></i>
+            </button>
+
+            <button
+                class="menu-button"
+                id="howToPlayButton"
+                type="button"
+                title="How to play"
+                aria-label="How to play"
+            >
+                <i class="fa-solid fa-question" aria-hidden="true"></i>
+            </button>
+
+            <button
+                class="menu-button"
+                id="archiveButton"
+                type="button"
+                title="Game archive"
+                aria-label="Game archive"
+            >
+                <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+            </button>
+        </nav>
+
+        <!-- Modal popups -->
+        <div id="modalOverlay" class="modal-overlay" hidden>
+            <section
+                class="game-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modalTitle"
+            >
+                <button
+                    id="closeModalButton"
+                    class="modal-close"
+                    type="button"
+                    aria-label="Close popup"
+                >
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+
+                <h2 id="modalTitle" class="modal-title"></h2>
+
+                <!-- Statistics -->
+                <div id="statisticsContent" class="modal-content" hidden>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <strong id="gamesPlayed">0</strong>
+                            <span>PLAYED</span>
+                        </div>
+
+                        <div class="stat-item">
+                            <strong id="winPercentage">0</strong>
+                            <span>WIN %</span>
+                        </div>
+
+                        <div class="stat-item">
+                            <strong id="currentStreak">0</strong>
+                            <span>STREAK</span>
+                        </div>
+
+                        <div class="stat-item">
+                            <strong id="bestScore">—</strong>
+                            <span>BEST</span>
+                        </div>
+                    </div>
+
+                    <div class="distribution">
+                        <h3 class="modal-title">GUESS DISTRIBUTION</h3>
+                        <div id="distributionRows"></div>
+                    </div>
+                </div>
+
+                <!-- About the game -->
+                <div
+                    id="readMeContent"
+                    class="modal-content text-content"
+                    hidden
+                >
+                    <p>
+                        A new character is selected every day.
+                        The character resets at 00:00 UTC.
+                    </p>
+
+                    <p>
+                        <b id="characterCount"></b> characters from all Mass Effect games,
+                        books, and comics.
+                    </p>
+
+                    <p>
+                        Statistics are saved locally in your browser.
+                        Clearing your browser data may erase your progress.
+                    </p>
+                </div>
+
+                <!-- How to play -->
+                <div
+                    id="howToPlayContent"
+                    class="modal-content text-content"
+                    hidden
+                >
+                    <p>
+                        Type a character's name into the input field and
+                        select a result to submit your guess.
+                    </p>
+
+                    <p>
+                        Each guess adds a row comparing your character with
+                        the character of the day.
+                    </p>
+
+                    <p>
+                        <span class="green">GREEN — </span>
+                        the attribute matches.
+                    </p>
+
+                    <p>
+                        <span class="yellow">YELLOW — </span>
+                        a shared affiliation, or within 3 years / one appearance.
+                    </p>
+
+                    <p>
+                        <b>GRAY — </b>
+                        the attribute does not match.
+                    </p>
+
+                    <p>
+                        <b>▲ / ▼ — </b>
+                        the answer's debut year or appearance count is higher / lower.
+                    </p>
+
+                    <p>
+                        Extra hints unlock on the third and sixth guess.
+                    </p>
+                </div>
+
+                <!-- Daily puzzle archive -->
+                <div id="archiveContent" hidden>
+                    <p class="archive-description">
+                        Replay daily puzzles you've missed.
+                        Completed puzzles cannot be replayed.
+                    </p>
+
+                    <div id="archiveList"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Daily hints -->
+        <section class="status-panels">
+            <div class="status-panel">
+                <span class="panel-label">DEBUT TITLE</span>
+                <div class="panel-indicator" id="debutHint"></div>
+                <span class="panel-count">GUESS 3</span>
+            </div>
+
+            <div class="status-panel">
+                <span class="panel-label">NAME BEGINS WITH</span>
+                <div class="panel-indicator" id="letterHint"></div>
+                <span class="panel-count">GUESS 6</span>
+            </div>
+        </section>
+
+        <!-- Main game -->
+        <section class="game-content">
+            <h2 class="section-heading">
+                IDENTIFY THE CHARACTER OF THE DAY
+            </h2>
+
+            <!-- Character input and autocomplete -->
+            <div class="input-section">
+                <input
+                    type="text"
+                    id="guessInput"
+                    placeholder="Name a character..."
+                    autocomplete="off"
+                    aria-label="Guess a character"
+                    aria-controls="characterDropdown"
+                >
+
+                <div
+                    id="characterDropdown"
+                    class="character-dropdown"
+                ></div>
+            </div>
+
+            <p class="guess-counter" id="guessCounter"></p>
+
+            <!-- Victory panel -->
+            <section
+                id="victoryPanel"
+                class="victory-panel"
+                aria-labelledby="victoryHeading"
+                hidden
+            >
+                <h2 id="victoryHeading" class="victory-heading">
+                    SUBJECT IDENTIFIED
+                </h2>
+
+                <div class="victory-indicator">
+                    <i class="fa-solid fa-check" aria-hidden="true"></i>
+                </div>
+
+                <h3 id="victoryName" class="victory-name"></h3>
+                <p id="victoryMessage" class="victory-message"></p>
+
+                <button
+                    id="shareResultButton"
+                    class="victory-button"
+                    type="button"
+                >
+                    SHARE RESULT
+                </button>
+
+                <div class="victory-divider"></div>
+
+                <div class="victory-footer">
+                    <h3 class="footer-heading">CONTINUE YOUR RUN</h3>
+
+                    <button
+                        id="playAgainButton"
+                        class="victory-button"
+                        type="button"
+                    >
+                        PLAY PREVIOUS DAYS
+                    </button>
+                </div>
+            </section>
+
+            <!-- Guess results -->
+            <div id="resultsTable" class="table-container no-guesses">
+                <div class="row header">
+                    <div>NAME</div>
+                    <div>GENDER</div>
+                    <div>RACE</div>
+                    <div>AFFILIATION</div>
+                    <div>DEBUT</div>
+                    <div>APPEARANCES</div>
+                </div>
+
+                <div id="guessesContainer"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Game data and logic -->
+    <script src="characters.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
