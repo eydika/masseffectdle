@@ -623,7 +623,7 @@ function updateDropdown() {
     const matches = characters.filter(character =>
         character.name.toLowerCase().includes(query) &&
         !guessedCharacters.has(character.name)
-    );
+    ).sort((a, b) => a.name.localeCompare(b.name));
 
     matches.forEach(character => {
         const option = document.createElement("div");
