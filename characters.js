@@ -48,7 +48,7 @@ const characters = [
         name: "Urdnot Wrex", 
         gender: "Male", 
         race: "Krogan",
-        affiliation: "Independent, Clan Urdnot", 
+        affiliation: "Shadow Broker, Clan Urdnot", 
         year: 2007,
         appearances: 4,
         debutTitle: "Mass Effect"
@@ -264,7 +264,7 @@ const characters = [
         name: "David Anderson",
         gender: "Male",
         race: "Human",
-        affiliation: "Alliance",
+        affiliation: "Alliance, Citadel Council",
         year: 2007,
         appearances: 10,
         debutTitle: "Mass Effect: Revelation"
@@ -282,7 +282,7 @@ const characters = [
         name: "Donnel Udina",
         gender: "Male",
         race: "Human",
-        affiliation: "Civilian, Cerberus",
+        affiliation: "Civilian, Citadel Council, Cerberus",
         year: 2007,
         appearances: 5,
         debutTitle: "Mass Effect"
@@ -309,7 +309,7 @@ const characters = [
         name: "Gianna Parasini",
         gender: "Female",
         race: "Human",
-        affiliation: "Internal Affairs",
+        affiliation: "Noveria Internal Affairs",
         year: 2007,
         appearances: 2,
         debutTitle: "Mass Effect"
@@ -388,6 +388,7 @@ const characters = [
     },
     {
         name: "Sha'ira",
+        aliases: ["The Consort", "Consort Sha'ira"],
         gender: "Female",
         race: "Asari",
         affiliation: "Civilian",
@@ -829,6 +830,7 @@ const characters = [
     },
     {
         name: "Illusive Man",
+        aliases: ["The Illusive Man", "Jack Harper"],
         gender: "Male",
         race: "Human",
         affiliation: "Cerberus",
@@ -1387,6 +1389,7 @@ const characters = [
     },
     { 
         name: "Linron", 
+        aliases: ["Dalatrass Linron"],
         gender: "Female", 
         race: "Salarian",
         affiliation: "Salarian Union", 
@@ -1458,7 +1461,8 @@ const characters = [
         debutTitle: "Mass Effect: Andromeda"
     },
     { 
-        name: "Urdnot Bakara (Eve)", 
+        name: "Urdnot Bakara", 
+        aliases: ["Eve"],
         gender: "Female", 
         race: "Krogan",
         affiliation: "Clan Urdnot", 
@@ -1495,6 +1499,7 @@ const characters = [
     },
     {
         name: "Shepard",
+        aliases: ["Commander Shepard", "John Shepard", "Jane Shepard"],
         gender: "Player-selected",
         race: "Human",
         affiliation: "Alliance, Spectres, Cerberus",
@@ -1516,6 +1521,131 @@ const characters = [
         gender: "Player-selected",
         race: "Human",
         affiliation: "Andromeda Initiative",
+        year: 2017,
+        appearances: 1,
+        debutTitle: "Mass Effect: Andromeda"
+    },
+    {
+        name: "Tevos",
+        aliases: ["Councilor Tevos"],
+        gender: "Female",
+        race: "Asari",
+        affiliation: "Citadel Council",
+        year: 2007,
+        appearances: 4,
+        debutTitle: "Mass Effect: Revelation"
+    },
+    {
+        name: "Irissa",
+        aliases: ["Councilor Irissa"],
+        gender: "Female",
+        race: "Asari",
+        affiliation: "Citadel Council",
+        year: 2010,
+        appearances: 2,
+        debutTitle: "Mass Effect 2"
+    },
+    {
+        name: "Valern",
+        aliases: ["Councilor Valern"],
+        gender: "Male",
+        race: "Salarian",
+        affiliation: "Citadel Council",
+        year: 2007,
+        appearances: 3,
+        debutTitle: "Mass Effect"
+    },
+    {
+        name: "Esheel",
+        aliases: ["Councilor Esheel", "Dalatrass Esheel"],
+        gender: "Female",
+        race: "Salarian",
+        affiliation: "Citadel Council",
+        year: 2010,
+        appearances: 2,
+        debutTitle: "Mass Effect 2"
+    },
+    {
+        name: "Sparatus",
+        aliases: ["Councilor Sparatus"],
+        gender: "Male",
+        race: "Turian",
+        affiliation: "Citadel Council",
+        year: 2007,
+        appearances: 3,
+        debutTitle: "Mass Effect"
+    },
+    {
+        name: "Quentius",
+        aliases: ["Councilor Quentius"],
+        gender: "Male",
+        race: "Turian",
+        affiliation: "Citadel Council",
+        year: 2010,
+        appearances: 2,
+        debutTitle: "Mass Effect 2"
+    },
+    {
+        name: "Zevin Raeka",
+        aliases: ["Pathfinder Raeka"],
+        gender: "Female",
+        race: "Salarian",
+        affiliation: "Andromeda Initiative, Pathfinders",
+        year: 2017,
+        appearances: 1,
+        debutTitle: "Mass Effect: Andromeda"
+    },
+    {
+        name: "Lumont Hayjer",
+        gender: "Male",
+        race: "Salarian",
+        affiliation: "Andromeda Initiative, Pathfinders",
+        year: 2017,
+        appearances: 1,
+        debutTitle: "Mass Effect: Andromeda"
+    },
+    {
+        name: "Ishara",
+        aliases: ["Pathfinder Ishara", "Matriarch Ishara"],
+        gender: "Female",
+        race: "Asari",
+        affiliation: "Andromeda Initiative, Pathfinders",
+        year: 2017,
+        appearances: 1,
+        debutTitle: "Mass Effect: Andromeda"
+    },
+    {
+        name: "Sarissa Theris",
+        gender: "Female",
+        race: "Asari",
+        affiliation: "Andromeda Initiative, Pathfinders",
+        year: 2017,
+        appearances: 1,
+        debutTitle: "Mass Effect: Andromeda"
+    },
+    {
+        name: "Vederia Damali",
+        gender: "Female",
+        race: "Asari",
+        affiliation: "Andromeda Initiative, Pathfinders",
+        year: 2017,
+        appearances: 1,
+        debutTitle: "Mass Effect: Andromeda"
+    },
+    {
+        name: "Macen Barro",
+        gender: "Male",
+        race: "Turian",
+        affiliation: "Andromeda Initiative, Pathfinders",
+        year: 2017,
+        appearances: 1,
+        debutTitle: "Mass Effect: Andromeda"
+    },
+    {
+        name: "Avitus Rix",
+        gender: "Male",
+        race: "Turian",
+        affiliation: "Spectres, Andromeda Initiative, Pathfinders",
         year: 2017,
         appearances: 1,
         debutTitle: "Mass Effect: Andromeda"

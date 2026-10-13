@@ -472,7 +472,8 @@ function submitGuess() {
     const userGuessText = input.value.trim().toLowerCase();
 
     const guessedChar = characters.find(
-        character => character.name.toLowerCase() === userGuessText
+        character => character.name.toLowerCase() === userGuessText ||
+        (character.aliases || []).some(alias => alias.toLowerCase() === userGuessText)
     );
 
     // Ignore empty or invalid guesses.
@@ -598,6 +599,7 @@ function submitGuess() {
     input.value = "";
     dropdown.innerHTML = "";
     highlightedIndex = -1;
+    input.blur();
 
     // Check for victory.
     if (guessedChar.name === secretCharacter.name) {
@@ -620,17 +622,26 @@ function updateDropdown() {
         return;
     }
 
-    const matches = characters.filter(character =>
-        character.name.toLowerCase().includes(query) &&
-        !guessedCharacters.has(character.name)
-    ).sort((a, b) => a.name.localeCompare(b.name));
+    const matches = characters.filter(character => {
+        const nameMatches =
+            character.name.toLowerCase().includes(query);
+
+        const aliasMatches = (character.aliases || []).some(
+            alias => alias.toLowerCase().includes(query)
+        );
+
+        return (
+            (nameMatches || aliasMatches) &&
+            !guessedCharacters.has(character.name)
+        );
+    }).sort((a, b) => a.name.localeCompare(b.name));
 
     matches.forEach(character => {
         const option = document.createElement("div");
         option.className = "character-option";
         option.textContent = character.name;
 
-        // Select and submit a character by clicking its name.
+        // Select and submit the character's canonical name.
         option.addEventListener("mousedown", event => {
             event.preventDefault();
 
@@ -642,6 +653,7 @@ function updateDropdown() {
 
         dropdown.appendChild(option);
     });
+
 }
 
 function highlightOption(index) {

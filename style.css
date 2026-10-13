@@ -51,14 +51,7 @@
 
 html {
     min-height: 100%;
-    background: var(--background);
-}
-
-body {
-    min-height: 100vh;
-    min-height: 100dvh;
-    margin: 0;
-    background:
+    background: 
         radial-gradient(
             ellipse at 50% -15%,
             rgba(32, 112, 160, 0.23),
@@ -77,6 +70,13 @@ body {
             rgba(85, 217, 245, 0.025) 40px
         ),
         var(--background);
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    background: transparent;
     color: var(--text);
     font-family: 'Roboto Mono', monospace;
     font-size: 12px;
