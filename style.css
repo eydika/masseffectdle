@@ -58,9 +58,24 @@ body {
     min-height: 100vh;
     min-height: 100dvh;
     margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    padding-bottom: 2px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
     background:
         radial-gradient(
-            ellipse at 50% 0%,
+            ellipse at 50% -15%,
             rgba(32, 112, 160, 0.23),
             transparent 65%
         ),
@@ -75,12 +90,7 @@ body {
             transparent 0,
             transparent 39px,
             rgba(85, 217, 245, 0.025) 40px
-        ),
-        var(--background);
-    color: var(--text);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 12px;
-    line-height: 1.6;
+        );
 }
 
 button,
