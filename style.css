@@ -60,7 +60,7 @@ body {
     margin: 0;
     background:
         radial-gradient(
-            ellipse at 50% -15%,
+            ellipse at 50% 0%,
             rgba(32, 112, 160, 0.23),
             transparent 65%
         ),
