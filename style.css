@@ -502,7 +502,7 @@ input:focus-visible {
     border-radius: var(--radius-large);
     background:
         radial-gradient(
-            ellipse at 50% 0%,
+            ellipse at 50% 10%,
             rgba(50, 136, 197, 0.16),
             transparent 65%
         ),
@@ -976,9 +976,8 @@ input:focus-visible {
 
 @media (max-width: 520px) {
     .game-container {
-        width: min(100% - 32px, 760px);
-        margin: 0 auto;
-        padding-top: max(30px, env(safe-area-inset-top)) 0 64px;
+        width: min(100% - 22px, 760px);
+        padding-top: 22px;
     }
 
     .game-header {
